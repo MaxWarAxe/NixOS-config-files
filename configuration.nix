@@ -84,6 +84,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     firefox
+    brave
     rofi-wayland
     discord
     networkmanagerapplet
@@ -124,6 +125,7 @@
     #Some office
     libreoffice
     xarchiver
+    gnome.file-roller
     udiskie
     btop
     qbittorrent
@@ -138,7 +140,8 @@
     vscode-fhs
     git
     godot_4
-    
+    nodejs_21
+    jdk22
     #Games
     superTuxKart
 
@@ -190,10 +193,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true; 
-  };
+
   hardware = {
     opengl.enable = true; 
     nvidia.modesetting.enable = true;
