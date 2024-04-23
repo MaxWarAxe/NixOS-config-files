@@ -124,7 +124,6 @@
 
     #Some office
     libreoffice
-    xarchiver
     gnome.file-roller
     udiskie
     btop
@@ -164,9 +163,6 @@
     noto-fonts-emoji
     proggyfonts
   ];
-  environment.sessionVariables = {
-    #NIXOS_OZONE_WL = "1";
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -200,6 +196,13 @@
   };
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.config = {
+    common = {
+      default = [
+        "gtk"
+      ];
+    };
+  };
   
   programs.zsh.enable = true;
   users.extraUsers.maxwaraxe = {
@@ -218,5 +221,9 @@
 
   services.udisks2 = {
     enable = true;
+  };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
 }
