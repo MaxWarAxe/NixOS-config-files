@@ -83,7 +83,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    firefox
     brave
     rofi-wayland
     discord
@@ -141,6 +140,8 @@
     godot_4
     nodejs_21
     jdk22
+    dbeaver
+    pgadmin4-desktopmode
     #Games
     superTuxKart
 
@@ -226,4 +227,20 @@
     enable = true;
     xwayland.enable = true;
   };
+  
+  # ...
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "mydatabase" ];
+    package = pkgs.postgresql_16;
+    enableTCPIP = true;
+    settings.port = 5432;
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+        local all       all     trust
+        host all all      ::1/128      trust
+        host all postgres 127.0.0.1/32 trust
+    '';
+  };
+  
 }
