@@ -11,7 +11,7 @@
       #./grub-theme.nix
       inputs.home-manager.nixosModules.default
     ];
-
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -97,6 +97,7 @@
     neofetch
     nix-prefetch-git
     gh
+    gnome.gnome-calculator
     #for sddm theme
     libsForQt5.qt5.qtgraphicaleffects
     libsForQt5.qt5.qtmultimedia
@@ -142,9 +143,13 @@
     jdk22
     dbeaver
     pgadmin4-desktopmode
+    (callPackage ./symphony-cli.nix {})
     #Games
     superTuxKart
-
+    xbomb
+    superTux
+    protonup
+    extremetuxracer
   ];
 
   
@@ -205,6 +210,8 @@
     };
   };
   
+  programs.steam.enable = true;
+
   programs.zsh.enable = true;
   users.extraUsers.maxwaraxe = {
     shell = pkgs.zsh;
